@@ -1,0 +1,1 @@
+scrapyd-deploy SpiderMan -p spiderman --version SpiderMan_v1.0 --build-egg=SpiderMan_v1.0.egg

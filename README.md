@@ -6,7 +6,7 @@
 
 
 ## Introduction
-[Echarts](https://github.com/ecomfe/echarts) is an open source library from Baidu for data visualization in javascript. It has awesome demo pages so I started to look out for an interface library so that I could use it in Python. I ended up with [echarts-python](https://github.com/yufeiminds/echarts-python) on github but it lacks of documentation and was not updated for a while. Just like many other Python projects, I started my own project, spiderman, referencing echarts-python and another library [pygal](https://github.com/Kozea/pygal).
+[spiderman]()xx
 
 ## Installation
 spiderman works on Python2 and Python3. For more information please refer to [changelog.md](https://github.com/chenjiandongx/spiderman/blob/master/changelog.md)

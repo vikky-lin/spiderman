@@ -5,10 +5,9 @@
 > scrapy project integrated with useful utils,focus on programing your spider logic.
 
 ##
-```
 ![servers](https://github.com/vikky-lin/spiderman/tree/master/screenshot/ScrapydWeb.png)
 ![Monitor](https://github.com/vikky-lin/spiderman/tree/master/screenshot/Spider%20Monitor.png)
-```
+
 ## Introduction
 [spiderman]()
 
@@ -47,7 +46,7 @@
     - cd **bin** & click **grafana-server.exe**(*windows version*) to start grafana
 
 8. **visit scrapydweb**
-    - visit http://127.0.0.1:5000(default)
+    - visit http://127.0.0.1:5000() as default.
 
 ## spiderman basic usage
 1. **get spiderman**

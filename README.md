@@ -14,44 +14,44 @@
 
 ## How to Build it?
 1. **get spiderman**
-```
-$ git clone --recursive https://github.com/vikky-lin/spiderman.git
-$ cd spiderman
-$ pip install -r requirements.txt
-```
+    ```
+    $ git clone --recursive https://github.com/vikky-lin/spiderman.git
+    $ cd spiderman
+    $ pip install -r requirements.txt
+    ```
 2. **remake on scrapydweb**
- - download [scrapydweb](https://github.com/vikky-lin/scrapydweb/archive/master.zip)(I have made some change on scrapydweb,to support monitoring on grafana)
- - unzip scrapydweb-master,cd scrapydweb-master,copy "scrapydweb" file
- - replace the "scrapudweb" file that you have install by pip(in the "site-packages" file of your own python environment)
+   - download [scrapydweb](https://github.com/vikky-lin/scrapydweb/archive/master.zip)(I have made some change on scrapydweb,to support monitoring on grafana)
+   - unzip scrapydweb-master,cd scrapydweb-master,copy "scrapydweb" file
+   - replace the "scrapudweb" file that you have install by pip(in the "site-packages" file of your own python environment)
 
 3. **start Mysql and create database <spiderdb>**
 
-  - execute spiderman/spider_monitor_database/spiderdb.sql in mysql.
+    - execute spiderman/spider_monitor_database/spiderdb.sql in mysql.
 
 4. **create your workspace**
 
-  choose any path you like,mkdir <SpiderMan> 
+    choose any path you like,mkdir <SpiderMan> 
   
 5. **start scrapyd server(optional)**
 
-  *if you already have a running scrapyd server,skip this step.*
-  otherwise,you can start a scrapyd server by cmd "scrapyd" 
+    *if you already have a running scrapyd server,skip this step.*  
+    otherwise,you can start a scrapyd server by cmd "scrapyd" 
 
 6. **start scrapydweb**
 
-  - cd SpiderMan
-  - cd scrapydWeb(visit [doc](https://github.com/my8100/scrapydweb/blob/master/README_CN.md) to get help for scrpaydweb config)
+    - cd SpiderMan
+    - cd scrapydWeb(visit [doc](https://github.com/my8100/scrapydweb/blob/master/README_CN.md) to get help for scrpaydweb config)
 
 7. **start grafana**
-  - download [grafana]() to <SpiderMan> 
-  - cd bin & click <grafana-server.exe> to start grafana
+    - download [grafana]() to <SpiderMan> 
+    - cd bin & click <grafana-server.exe> to start grafana
 
 8. **visit scrapydweb**
 
-  - visit http://127.0.0.1:5000(default)
+    - visit http://127.0.0.1:5000(default)
 
 ## spiderman basic usage
-  spiderman 
+    spiderman 
 
 
 

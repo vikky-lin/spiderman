@@ -62,7 +62,7 @@
 2. **create your own spide**r  
    you can define your spider in <**spiders**>
    
-3. **use spiderman utils**
+3. **use spiderman utils**  
    I have developed some useful utils in spiderman:
    - DBPool utils
      - OraclePool
@@ -77,7 +77,8 @@
      - SeleniumMiddleware
    - VerifyCodeCrack
      - TODO
- 
+## TODO
+
 ## Author
 spiderman is developed and maintained by vikky-lin ([1309550760@qq.com](1309550760@qq.com))
 

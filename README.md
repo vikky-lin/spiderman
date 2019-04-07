@@ -37,7 +37,7 @@ $ pip install -r requirements.txt
   otherwise,you can start a scrapyd server by cmd "scrapyd"
 * start scrapydweb
   1. cd SpiderMan
-  2. $ cd scrapydWeb(visit [doc](https://github.com/my8100/scrapydweb/blob/master/README_CN.md) to get help of scrpaydweb config)
+  2. $ cd scrapydWeb(visit [doc](https://github.com/my8100/scrapydweb/blob/master/README_CN.md) to get help for scrpaydweb config)
 * start grafana
   1. download [grafana]() to <SpiderMan> 
   2. $ cd bin & click <grafana-server.exe> to start grafana
@@ -45,7 +45,7 @@ $ pip install -r requirements.txt
   visit http://127.0.0.1:5000(default)
 
 ## Basic Usage
-  
+  spiderman 
 ## Documentation
 * [中文文档]()
 * [English]()

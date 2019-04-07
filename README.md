@@ -44,9 +44,13 @@
     - download [grafana](https://grafana.com/grafana/download),eg: *grafana-6.0.1*
     - unzip grafana to **SpiderMonitorCenter**
     - cd **bin** & click **grafana-server.exe**(*windows version*) to start grafana
+    - visit [http://127.0.0.1:3000]() as default.
+    - add mysql datasource  
+    ![3](https://github.com/vikky-lin/spiderman/blob/master/screenshot/add%20datasource.png)
+    - import **Spider Monitor Platform** dashboard,get json [here](https://github.com/vikky-lin/spiderman/blob/master/granafa%20spider%20dashboard/Spider%20Monitor%20Platform.json)
 
 8. **visit scrapydweb**
-    - visit http://127.0.0.1:5000() as default.
+    - visit [http://127.0.0.1:5000]() as default.
 
 ## spiderman basic usage
 1. **get spiderman**

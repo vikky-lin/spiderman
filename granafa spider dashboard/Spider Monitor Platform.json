@@ -1,0 +1,1048 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 4,
+    "iteration": 1554652374186,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 40,
+        "panels": [],
+        "title": "Summary",
+        "type": "row"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#d44a3a",
+          "#3274D9",
+          "#73BF69"
+        ],
+        "datasource": "spiderDB",
+        "decimals": null,
+        "format": "none",
+        "gauge": {
+          "maxValue": 20,
+          "minValue": 0,
+          "show": true,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 11,
+          "x": 0,
+          "y": 1
+        },
+        "id": 9,
+        "interval": null,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "#73BF69",
+          "full": true,
+          "lineColor": "#F2495C",
+          "show": false
+        },
+        "tableColumn": "count(distinct project_name)",
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\ncount(distinct project_name)\r\nFROM spider_task_monitor\r\nWHERE \r\n$__timeFilter(create_time) and project_name='$Project' and\r\nstatus =1\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request_count"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_monitor",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "thresholds": "",
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Project in  Running",
+        "type": "singlestat",
+        "valueFontSize": "120%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "avg"
+      },
+      {
+        "cacheTimeout": null,
+        "columns": [],
+        "datasource": "spiderDB",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 6,
+          "w": 13,
+          "x": 11,
+          "y": 1
+        },
+        "id": 41,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": null,
+          "desc": false
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "pattern": "/.*/",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nexecute_ip as 'node',\r\ncase when status =1 then count(1) end as 'task-in-running'\r\nFROM spider_task_monitor\r\nwhere $__timeFilter(create_time) and project_name='$Project'\r\ngroup by execute_ip",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request_count"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_monitor",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Node Monitor",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 32,
+        "panels": [],
+        "title": "$Project : $Project_Status",
+        "type": "row"
+      },
+      {
+        "cacheTimeout": null,
+        "columns": [],
+        "datasource": "spiderDB",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 7,
+          "w": 10,
+          "x": 0,
+          "y": 8
+        },
+        "id": 30,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": null,
+          "desc": false
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nproject_name,\r\nspider_name,\r\ncase when status=0 then count(1) end as 'pendding',\r\ncase when status=1 then count(1) end as 'running',\r\ncase when status=2 then count(1) end as 'stop',\r\ncase when status=3 then count(1) end as 'cancel',\r\ncase when status=4 then count(1) end as 'finish'\r\nFROM spider_task_monitor\r\nwhere $__timeFilter(create_time) \r\n  and project_name='$Project' \r\n  and spider_name='$Spider' \r\n  and job_instance_id = '$Period_Job_Id'\r\ngroup by project_name,spider_name",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request_count"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_monitor",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Spider Monitor",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "cacheTimeout": null,
+        "columns": [],
+        "datasource": "spiderDB",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 7,
+          "w": 14,
+          "x": 10,
+          "y": 8
+        },
+        "id": 29,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": null,
+          "desc": false
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 0,
+            "pattern": "/.*/",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\nspider_name,\r\njob_instance_id,\r\ntask_instance_id,\r\nexecute_ip as 'node',\r\ncase when status =1 then count(1) end as 'task-in-running'\r\nFROM spider_task_monitor\r\nwhere $__timeFilter(create_time) and project_name='$Project' and job_instance_id='$Period_Job_Id'\r\ngroup by 1,2,3,4",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request_count"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_monitor",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Project Node Monitor",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 27,
+        "panels": [],
+        "repeat": null,
+        "title": "Spider Task Monitor",
+        "type": "row"
+      },
+      {
+        "columns": [],
+        "datasource": "spiderDB",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 5,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 6,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 7,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 0,
+            "mappingType": 1,
+            "pattern": "redirect",
+            "thresholds": [
+              "1"
+            ],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 0,
+            "mappingType": 1,
+            "pattern": "retry",
+            "thresholds": [
+              "1"
+            ],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 0,
+            "mappingType": 1,
+            "pattern": "ignored",
+            "thresholds": [
+              "1"
+            ],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 0,
+            "mappingType": 1,
+            "pattern": "status_other",
+            "thresholds": [
+              "1"
+            ],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 0,
+            "pattern": "/.*/",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  ta.spider_name,\r\n\tta.job_instance_id,\r\n\tta.task_instance_id,\r\n\tta.request,\r\n\tta.response,\r\n\tta.filtered_request,\r\n\tta.crawled_pages,\r\n\tta.status_200,\r\n\tta.status_other,\r\n\tta.redirect,\r\n\tta.retry,\r\n\tta.ignored\r\nFROM\r\n\tspider_crawl_monitor ta\r\n\tJOIN ( SELECT job_instance_id, task_instance_id, max( stat_time ) AS 'now' FROM spider_crawl_monitor GROUP BY job_instance_id, task_instance_id ) tb ON ta.job_instance_id = tb.job_instance_id \r\n\tAND ta.task_instance_id = tb.task_instance_id \r\n\tAND ta.stat_time = tb.now\r\n\tjoin spider_task_monitor tc\r\n\ton ta.task_instance_id= tc.task_instance_id\r\nWHERE\r\n  $__timeFilter(ta.stat_time)\r\n  and project_name ='$Project'\r\n  and ta.spider_name = '$Spider'\r\n  and ta.task_instance_id in ($Spider_Task_Id)\r\n-- ORDER BY stat_time\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request_count"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_stats",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Task Request Monitor",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "columns": [],
+        "datasource": "spiderDB",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 5,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 33,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "critical",
+            "thresholds": [
+              "1"
+            ],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "decimals": 0,
+            "pattern": "error",
+            "thresholds": [
+              "1"
+            ],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": "value",
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 0,
+            "mappingType": 1,
+            "pattern": "warning",
+            "thresholds": [
+              "20"
+            ],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  ta.spider_name,\r\n\tta.job_instance_id,\r\n\tta.task_instance_id,\r\n\tta.scraped_items,\r\n\tta.critical,\r\n\tta.error,\r\n\tta.warning,\r\n\tta.remark\r\n\t\r\nFROM\r\n\tspider_crawl_monitor ta\r\n\tJOIN ( SELECT job_instance_id, task_instance_id, max( stat_time ) AS 'now' FROM spider_crawl_monitor GROUP BY job_instance_id, task_instance_id ) tb ON ta.job_instance_id = tb.job_instance_id \r\n\tAND ta.task_instance_id = tb.task_instance_id \r\n\tAND ta.stat_time = tb.now\r\n\tjoin spider_task_monitor tc\r\n\ton ta.task_instance_id= tc.task_instance_id\r\nWHERE\r\n  $__timeFilter(stat_time)\r\n  and project_name ='$Project'\r\n  and ta.spider_name = '$Spider'\r\n  and ta.task_instance_id in ($Spider_Task_Id)\r\n-- ORDER BY stat_time\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request_count"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_stats",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Spider Response Parse Monitor",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "fill": 1,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 26
+        },
+        "hideTimeOverride": false,
+        "id": 35,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "paceLength": 10,
+        "percentage": false,
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "task_instance_id",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  stat_time AS \"time\",\r\n  -- task_instance_id as metric,\r\n  round(request*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'request_avg',\r\n  round(response*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'response_avg',\r\n  round(crawled_pages*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'crawled_pages_avg',\r\n  round(scraped_items*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'scraped_items_avg'\r\nFROM spider_crawl_monitor\r\nWHERE\r\n  $__timeFilter(stat_time) \r\n  and task_instance_id in ($Spider_Task_Id)\r\nORDER BY stat_time",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_monitor",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Spider Crawl Monitor",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "fill": 1,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 26
+        },
+        "hideTimeOverride": false,
+        "id": 36,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "paceLength": 10,
+        "percentage": false,
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "task_instance_id",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  stat_time AS \"time\",\r\n  -- task_instance_id as metric,\r\n  round(request*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'request_avg',\r\n  round(response*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'response_avg',\r\n  round(crawled_pages*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'crawled_pages_avg',\r\n  round(scraped_items*60/TIMESTAMPDIFF(second,create_time,stat_time),0) as 'scraped_items_avg'\r\nFROM spider_crawl_monitor\r\nWHERE\r\n  $__timeFilter(stat_time)\r\n  and task_instance_id in ($Spider_Task_Id)\r\nORDER BY stat_time",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "request"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "spider_crawl_monitor",
+            "timeColumn": "stat_time",
+            "timeColumnType": "timestamp",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Spider Crawl Monitor",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 18,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "text": "StandBy",
+            "value": "StandBy"
+          },
+          "datasource": "spiderDB",
+          "definition": "select  case  when count(1)>0 then 'Runing' else 'StandBy' end from spider_task_monitor  where project_name='$Project' and status=1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Project_Status",
+          "multi": false,
+          "name": "Project_Status",
+          "options": [],
+          "query": "select  case  when count(1)>0 then 'Runing' else 'StandBy' end from spider_task_monitor  where project_name='$Project' and status=1",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "unkown",
+            "value": "unkown"
+          },
+          "datasource": "spiderDB",
+          "definition": "select distinct project_name from spider_task_monitor",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Project",
+          "multi": false,
+          "name": "Project",
+          "options": [],
+          "query": "select distinct project_name from spider_task_monitor",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "redisspider_redis",
+            "value": "redisspider_redis"
+          },
+          "datasource": "spiderDB",
+          "definition": "select distinct spider_name from spider_task_monitor where project_name='$Project'",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Spider",
+          "multi": false,
+          "name": "Spider",
+          "options": [],
+          "query": "select distinct spider_name from spider_task_monitor where project_name='$Project'",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "unkown",
+            "value": "unkown"
+          },
+          "datasource": "spiderDB",
+          "definition": "select job_instance_id  from spider_task_monitor where project_name='$Project' and spider_name= '$Spider'",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Period_Job_Id",
+          "multi": false,
+          "name": "Period_Job_Id",
+          "options": [],
+          "query": "select job_instance_id  from spider_task_monitor where project_name='$Project' and spider_name= '$Spider'",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "spiderDB",
+          "definition": "select distinct task_instance_id from spider_task_monitor where project_name='$Project' and spider_name in ('$Spider') and job_instance_id = '$Period_Job_Id'",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Spider_Task_Id",
+          "multi": true,
+          "name": "Spider_Task_Id",
+          "options": [],
+          "query": "select distinct task_instance_id from spider_task_monitor where project_name='$Project' and spider_name in ('$Spider') and job_instance_id = '$Period_Job_Id'",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "timepicker": {
+      "hidden": false,
+      "nowDelay": "",
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "utc",
+    "title": "Spider Monitor Platform",
+    "uid": "7X2YSa3mz",
+    "version": 141
+  }

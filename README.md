@@ -5,59 +5,55 @@
 > scrapy project integrated with useful utils,focus on programing your spider logic.
 
 ##
-![servers](https://raw.githubusercontent.com/my8100/scrapydweb/master/screenshots/servers.png)
-
+```
+![servers](https://github.com/vikky-lin/spiderman/blob/master/spiderman/screenshot/ScrapydWeb.png)
+![Monitor](https://github.com/vikky-lin/spiderman/blob/master/spiderman/screenshot/Spider%20Monitor.png)
+```
 ## Introduction
 [spiderman]()wait
 
-## Installation
-spiderman works on Python3. 
-
-
-### spiderman
-You can install it via pip
-```
-$ pip install pyspiderman -U
-```
-
-or clone it and install it
+## How to Build it?
+1. **get spiderman**
 ```
 $ git clone --recursive https://github.com/vikky-lin/spiderman.git
 $ cd spiderman
 $ pip install -r requirements.txt
 ```
-* remake on scrapydweb
-  1. download [scrapydweb](https://github.com/vikky-lin/scrapydweb/archive/master.zip)(I have made some change on scrapydweb,to support monitoring on grafana)
-  2. unzip scrapydweb-master,cd scrapydweb-master,copy "scrapydweb" file
-  3. replace the "scrapudweb" file that you have install by pip(in the "site-packages" file of your own python environment)
-* start Mysql and create database <spiderdb>
-  execute spiderman/spider_monitor_database/spiderdb.sql in mysql.
-* create your workspace
+2. **remake on scrapydweb**
+ - download [scrapydweb](https://github.com/vikky-lin/scrapydweb/archive/master.zip)(I have made some change on scrapydweb,to support monitoring on grafana)
+ - unzip scrapydweb-master,cd scrapydweb-master,copy "scrapydweb" file
+ - replace the "scrapudweb" file that you have install by pip(in the "site-packages" file of your own python environment)
+
+3. **start Mysql and create database <spiderdb>**
+
+  - execute spiderman/spider_monitor_database/spiderdb.sql in mysql.
+
+4. **create your workspace**
+
   choose any path you like,mkdir <SpiderMan> 
-* start scrapyd server(optional)
-  if you already have a running scrapyd server,skip this step.
-  otherwise,you can start a scrapyd server by cmd "scrapyd"
-* start scrapydweb
-  1. cd SpiderMan
-  2. $ cd scrapydWeb(visit [doc](https://github.com/my8100/scrapydweb/blob/master/README_CN.md) to get help for scrpaydweb config)
-* start grafana
-  1. download [grafana]() to <SpiderMan> 
-  2. $ cd bin & click <grafana-server.exe> to start grafana
-* visit scrapydweb
-  visit http://127.0.0.1:5000(default)
+  
+5. **start scrapyd server(optional)**
 
-## Basic Usage
+  *if you already have a running scrapyd server,skip this step.*
+  otherwise,you can start a scrapyd server by cmd "scrapyd" 
+
+6. **start scrapydweb**
+
+  - cd SpiderMan
+  - cd scrapydWeb(visit [doc](https://github.com/my8100/scrapydweb/blob/master/README_CN.md) to get help for scrpaydweb config)
+
+7. **start grafana**
+  - download [grafana]() to <SpiderMan> 
+  - cd bin & click <grafana-server.exe> to start grafana
+
+8. **visit scrapydweb**
+
+  - visit http://127.0.0.1:5000(default)
+
+## spiderman basic usage
   spiderman 
-## Documentation
-* [中文文档]()
-* [English]()
 
 
-## Test
-```shell
-$ cd test
-$ nosetests --with-coverage --cover-package spiderman --cover-package test
-```
 
 ## Author
 spiderman is developed and maintained by vikky-lynn ([1309550760@qq.com](1309550760@qq.com))

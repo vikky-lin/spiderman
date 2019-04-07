@@ -1,6 +1,6 @@
 # spiderman
 
-# [spiderman](https://github.com/vikky-lynn/spiderman) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# [spiderman](https://github.com/vikky-lynn/spiderman) [![License: Apache2.0](https://img.shields.io/badge/License-Apache2.0-green.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 > scrapy project integrated with useful utils,focus on programing your spider logic.
 

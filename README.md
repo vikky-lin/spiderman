@@ -11,7 +11,7 @@
 ## Introduction
 [spiderman]()
 
-## How to Build scrpay monitor system?
+## How to Build scrapy monitor system?
 1. **install scrapydweb**
     ```
     $ pip install scrapydweb
